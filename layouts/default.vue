@@ -1,48 +1,17 @@
 <template>
   <v-app dark>
     <v-app-bar
+      app
       flat
       fixed
-      class="app-bar rounded-lg ma-2 ma-sm-5"
+      dense
+      class="app-bar"
     >
       <nuxt-link
         to="/"
         class="deep-purple--text text--accent-4 text-decoration-none text-sm-h6"
-      >Akere Dumale</nuxt-link>
+      >Wanlainjo Tech hub</nuxt-link>
       <v-spacer />
-      <router-link
-        to="/"
-        class="text-decoration-none mr-5 deep-purple--text text--accent-4 hidden-xs-only"
-        active-class="blue-grey--text text--darken-1"
-      >Home</router-link>
-      <router-link
-        to="/work"
-        class="text-decoration-none mr-5 deep-purple--text text--accent-4 hidden-xs-only"
-        active-class="blue-grey--text text--darken-1"
-      >Work</router-link>
-      <Contact />
-      <v-menu offset-y>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            icon
-            small
-            v-bind="attrs"
-            v-on="on"
-            class="ml-5 hidden-sm-and-up"
-          >
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
-          <v-list-item
-            v-for="(route, i) in routes"
-            :key="i"
-            :to="route.to"
-          >
-            <v-list-item-title>{{ route.title }}</v-list-item-title>
-          </v-list-item>
-        </v-list>
-      </v-menu>
     </v-app-bar>
     <v-main>
       <transition
