@@ -1,136 +1,192 @@
 <template>
-  <v-card width="500">
+  <v-card
+    width="100%"
+    flat
+  >
     <v-card-title>Students details</v-card-title>
-    <v-card-text>
-      <v-row
-        dense
-        align="start"
-        justify="space-between"
+    <v-row
+      no-gutters
+      align="start"
+      justify="space-between"
+    >
+      <v-col
+        cols="12"
+        sm="8"
+        order="1"
+        order-sm="0"
       >
-        <v-col cols="12">
-          <v-text-field
+        <v-card-text>
+          <v-row
             dense
-            outlined
-            label="Full name"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-select
-            dense
-            outlined
-            label="Sex"
-            :items="['Male', 'Female']"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            dense
-            outlined
-            label="Address"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            dense
-            outlined
-            type="date"
-            label="date of birth"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            dense
-            outlined
-            label="State of origin"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            dense
-            outlined
-            label="Phone number"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            dense
-            outlined
-            type="email"
-            label="Email address"
-          />
-        </v-col>
-      </v-row>
-    </v-card-text>
+            align="start"
+            justify="space-between"
+          >
+            <v-col cols="12">
+              <v-text-field
+                dense
+                outlined
+                label="Full name"
+                v-model="formCredential.studentsname"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-select
+                dense
+                outlined
+                label="Sex"
+                :items="['Male', 'Female']"
+                v-model="formCredential.sex"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                dense
+                outlined
+                label="Address"
+                v-model="formCredential.address"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                dense
+                outlined
+                type="date"
+                label="date of birth"
+                v-model="formCredential.dob"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                dense
+                outlined
+                label="State of origin"
+                v-model="formCredential.state"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                dense
+                outlined
+                label="Phone number"
+                v-model="formCredential.phone"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                dense
+                outlined
+                type="email"
+                label="Email address"
+                v-model="formCredential.email"
+              />
+            </v-col>
+          </v-row>
+        </v-card-text>
 
-    <v-divider />
-    <v-card-title>Sponsorship</v-card-title>
+        <v-divider />
+        <v-card-title>Sponsorship</v-card-title>
 
-    <v-card-text>
-      <v-row
-        dense
-        align="start"
-        justify="space-between"
+        <v-card-text>
+          <v-row
+            dense
+            align="start"
+            justify="space-between"
+          >
+            <v-col cols="12">
+              <v-text-field
+                dense
+                outlined
+                label="Name"
+                v-model="formCredential.sponsorName"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                dense
+                outlined
+                label="Address"
+                v-model="formCredential.sponsorAddress"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                dense
+                outlined
+                label="Phone number"
+                v-model="formCredential.sponsorPhone"
+              />
+            </v-col>
+          </v-row>
+        </v-card-text>
+
+        <v-divider />
+        <v-card-title>Courrses registerd</v-card-title>
+
+        <v-card-text>
+          <v-row
+            dense
+            align="start"
+            justify="space-between"
+          >
+            <v-col cols="12">
+              <v-select
+                dense
+                outlined
+                label="Courses"
+                :items="courses"
+                v-model="formCredential.course1"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-select
+                dense
+                outlined
+                label="Courses"
+                :items="courses"
+                v-model="formCredential.course2"
+              />
+            </v-col>
+            <v-col cols="12">
+              <v-select
+                dense
+                outlined
+                label="Courses"
+                :items="courses"
+                v-model="formCredential.course3"
+              />
+            </v-col>
+          </v-row>
+        </v-card-text>
+      </v-col>
+      <v-col
+        cols="12"
+        sm="4"
       >
-        <v-col cols="12">
-          <v-text-field
-            dense
-            outlined
-            label="Name"
+        <v-card
+          min-height="200"
+          flat
+          outlined
+          class="d-flex justify-center align-center"
+          @click="clickOnFileInput"
+        >
+          <img
+            v-if="url"
+            :src="url"
+            style="width: 100%;"
           />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            dense
-            outlined
-            label="Address"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-text-field
-            dense
-            outlined
-            label="Phone number"
-          />
-        </v-col>
-      </v-row>
-    </v-card-text>
-
-    <v-divider />
-    <v-card-title>Courrses registerd</v-card-title>
-
-    <v-card-text>
-      <v-row
-        dense
-        align="start"
-        justify="space-between"
-      >
-        <v-col cols="12">
-          <v-select
-            dense
-            outlined
-            label="Courses"
-            :items="courses"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-select
-            dense
-            outlined
-            label="Courses"
-            :items="courses"
-          />
-        </v-col>
-        <v-col cols="12">
-          <v-select
-            dense
-            outlined
-            label="Courses"
-            :items="courses"
-          />
-        </v-col>
-      </v-row>
-    </v-card-text>
-
+          <v-icon
+            v-else
+            large
+          >mdi-account</v-icon>
+        </v-card>
+        <input
+          type="file"
+          id="fileInput"
+          @change="onFileChange"
+          style="display: none;"
+        />
+      </v-col>
+    </v-row>
     <Agreement />
 
     <v-card-actions>
@@ -143,8 +199,10 @@
 <script>
 import Agreement from './Agreement.vue'
 import SubmitButton from './SubmitButton.vue'
+import { mapActions, mapState } from 'vuex'
 export default {
   data: () => ({
+    url: null,
     courses: [
       'Frontend developement (web)',
       'Frontend developement (Mobile)',
@@ -164,7 +222,36 @@ export default {
     ]
   }),
 
-  components: { Agreement, SubmitButton }
+  components: { Agreement, SubmitButton },
+
+  methods: {
+    onFileChange (e) {
+      const file = e.target.files[0]
+
+      if (!file) return
+
+      this.url = URL.createObjectURL(file)
+      this._image = file
+    },
+
+    clickOnFileInput () {
+      document.querySelector('#fileInput').click()
+    },
+
+  },
+
+  computed: {
+    ...mapState(['formCredential', 'image']),
+
+    _image: {
+      get () {
+        return this.$store.state.image;
+      },
+      set (new_value) {
+        this.$store.state.image = new_value;
+      }
+    },
+  }
 }
 </script>
 
