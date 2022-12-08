@@ -50,7 +50,13 @@ export default createStore({
     snackbar: false,
     text: '',
     color: 'green',
-    textColor: 'white'
+    textColor: 'white',
+    evenForm: {
+      name: '',
+      email: '',
+      phone: ''
+    },
+    evenFormLoading: false
   },
 
   getters: {
@@ -102,7 +108,8 @@ export default createStore({
             .then(async downloadURL => {
               await addDoc(collection(db, 'registration'), {
                 ...this.state.formCredential,
-                displayPicture: downloadURL
+                displayPicture: downloadURL,
+                timestamp: serverTimestamp()
               })
               this.state.loading = false
               this.state.snackbar = true
@@ -112,6 +119,19 @@ export default createStore({
             })
         }
       )
+    },
+
+    async submitEventForm({
+      commit
+    }) {
+      this.state.evenFormLoading = true
+
+      await addDoc(collection(db, 'evenRegistration'), {
+        ...this.state.evenForm,
+        timestamp: serverTimestamp()
+      })
+
+      this.state.evenFormLoading = false
     }
   },
 })
