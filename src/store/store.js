@@ -61,11 +61,13 @@ export default createStore({
     },
     evenFormLoading: false,
     registration: [],
-    viewStudent: null
+    viewStudent: null,
+    eventRegistration: []
   },
 
   getters: {
-    registration: state => state.registration
+    registration: state => state.registration,
+    eventRegistration: state => state.eventRegistration
   },
 
   mutations: {
@@ -153,6 +155,17 @@ export default createStore({
     }, id) {
       const student = await (await getDoc(doc(db, 'registration', id))).data()
       commit('getStudent', student)
-    }
+    },
+
+    async getRegistrationForms() {
+      this.state.eventRegistration = []
+      let querySnapshot = await getDocs(collection(db, "evenRegistration"))
+      querySnapshot.forEach((doc) => {
+        this.state.eventRegistration.push({
+          id: doc.id,
+          ...doc.data()
+        })
+      })
+    },
   },
 })
