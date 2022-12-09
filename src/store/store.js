@@ -4,6 +4,9 @@ import {
 import {
   addDoc,
   collection,
+  doc,
+  getDoc,
+  getDocs,
   serverTimestamp
 } from 'firebase/firestore'
 import {
@@ -56,11 +59,13 @@ export default createStore({
       email: '',
       phone: ''
     },
-    evenFormLoading: false
+    evenFormLoading: false,
+    registration: [],
+    viewStudent: null
   },
 
   getters: {
-
+    registration: state => state.registration
   },
 
   mutations: {
@@ -73,13 +78,13 @@ export default createStore({
       state.step -= 1
     },
 
-    closeSnackbar: state => state.snackbar = false
+    closeSnackbar: state => state.snackbar = false,
+
+    getStudent: (state, student) => state.viewStudent = student
   },
 
   actions: {
-    async submitForm({
-      commit
-    }) {
+    async submitForm() {
       let data = this.state.formCredential
 
       if (!data.image && data.studentsname == '' && data.sex == '' && data.address == '' && data.dob == '' && data.state == '' && data.phone == '' && data.email == '' && data.sponsorName == '' && data.sponsorAddress == '' && data.sponsorPhone == '') {
@@ -121,9 +126,7 @@ export default createStore({
       )
     },
 
-    async submitEventForm({
-      commit
-    }) {
+    async submitEventForm() {
       this.state.evenFormLoading = true
 
       await addDoc(collection(db, 'evenRegistration'), {
@@ -132,6 +135,24 @@ export default createStore({
       })
 
       this.state.evenFormLoading = false
+    },
+
+    async getRegistrationForms() {
+      this.state.registration = []
+      let querySnapshot = await getDocs(collection(db, "registration"))
+      querySnapshot.forEach((doc) => {
+        this.state.registration.push({
+          id: doc.id,
+          ...doc.data()
+        })
+      })
+    },
+
+    async getStudent({
+      commit
+    }, id) {
+      const student = await (await getDoc(doc(db, 'registration', id))).data()
+      commit('getStudent', student)
     }
   },
 })
