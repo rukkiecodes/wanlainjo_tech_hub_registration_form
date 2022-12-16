@@ -1,11 +1,8 @@
 <template>
   <v-responsive>
     <v-container class="d-flex flex-column justify-start align-center">
-      <v-card class="ma-0 pa-0" height="200" width="600" max-width="100%">
-        <v-img
-          cover
-          src="https://res.cloudinary.com/rukkiecodes/image/upload/v1663800564/Screenshot_from_2022-09-21_23-48-03_rzxjmn.png"
-        ></v-img>
+      <v-card class="ma-0 pa-0" width="600" max-width="100%">
+        <img cover src="../assets/images/header.jpg" style="width: 100%; object-fit: cover;" />
       </v-card>
 
       <v-card class="mt-5" width="600" max-width="100%">
@@ -16,15 +13,15 @@
             variant="outlined"
             color="indigo darken-4"
             v-model="evenForm.name"
-            ></v-text-field>
-            <v-text-field
+          ></v-text-field>
+          <v-text-field
             label="Email"
             prepend-inner-icon="mdi-email"
             variant="outlined"
             color="indigo darken-4"
             v-model="evenForm.email"
-            ></v-text-field>
-            <v-text-field
+          ></v-text-field>
+          <v-text-field
             label="Phone"
             prepend-inner-icon="mdi-phone"
             variant="outlined"
@@ -55,7 +52,7 @@
 import { mapActions, mapState } from "vuex";
 export default {
   methods: {
-    ...mapActions(['submitEventForm'])
+    ...mapActions(["submitEventForm"]),
   },
 
   computed: {
