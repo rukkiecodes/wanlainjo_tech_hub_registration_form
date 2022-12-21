@@ -17,7 +17,10 @@
                   }}</v-list-item-subtitle
                 >
                 <v-list-item-subtitle>
-                  For the price of ₦{{ 50000 }} only</v-list-item-subtitle
+                  For the price of ₦{{
+                    (50000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }}
+                  only</v-list-item-subtitle
                 >
                 <template v-slot:append>
                   <v-btn
@@ -53,7 +56,10 @@
                   }}</v-list-item-subtitle
                 >
                 <v-list-item-subtitle>
-                  For the price of ₦{{ 50000 }} only</v-list-item-subtitle
+                  For the price of ₦{{
+                    (50000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }}
+                  only</v-list-item-subtitle
                 >
                 <template v-slot:append>
                   <v-btn
@@ -89,7 +95,10 @@
                   }}</v-list-item-subtitle
                 >
                 <v-list-item-subtitle>
-                  For the price of ₦{{ 50000 }} only</v-list-item-subtitle
+                  For the price of ₦{{
+                    (50000).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                  }}
+                  only</v-list-item-subtitle
                 >
                 <template v-slot:append>
                   <v-btn
@@ -123,7 +132,12 @@ export default {
         email: "rukkiecodes@gmail.com",
         amount: price,
         ref: `Wanlainjo-course--${uuid.v1()}`,
-        onClose: () => {},
+        onClose: (w) => {
+          console.log("closed: ", w);
+        },
+        onSuccessful: (e) => {
+          console.log(e);
+        },
       });
       handler.openIframe();
     },
