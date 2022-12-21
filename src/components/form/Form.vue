@@ -3,13 +3,13 @@
     <v-card-text>
       <v-toolbar
         color="white"
-        :elevation="5"
+        :elevation="0"
         density="comfortable"
         rounded="lg"
       >
         <v-toolbar-title>{{
           step == 1
-            ? "Students details"
+            ? "Student's details"
             : step == 2
             ? "Sponsorship"
             : step == 3
@@ -48,6 +48,7 @@
         <Step1Vue v-show="step == 1" />
         <Step2Vue v-show="step == 2" />
         <Step3Vue v-show="step == 3" />
+        <Step4Vue v-show="step == 4" />
       </v-row>
     </v-card-text>
 
@@ -57,12 +58,12 @@
         <v-btn v-show="step > 1" @click="prev" color="warning" variant="tonal"
           >Go back</v-btn
         >
-        <v-btn v-show="step < 3" @click="next" color="#3C37FF" variant="tonal"
+        <v-btn v-show="step < 4" @click="next" color="#3C37FF" variant="tonal"
           >Next</v-btn
         >
 
         <v-btn
-          v-show="step == 3"
+          v-show="step == 4"
           @click="submitForm"
           :loading="loading"
           color="#3C37FF"
@@ -92,13 +93,14 @@ import { mapActions, mapMutations, mapState } from "vuex";
 import Step1Vue from "./components/Step1.vue";
 import Step2Vue from "./components/Step2.vue";
 import Step3Vue from "./components/Step3.vue";
+import Step4Vue from "./components/Step4.vue";
 import Agreement from "./Agreement.vue";
 export default {
   data: () => ({
     url: null,
   }),
 
-  components: { Step1Vue, Step2Vue, Step3Vue, Agreement },
+  components: { Step1Vue, Step2Vue, Step3Vue, Step4Vue, Agreement },
 
   methods: {
     onFileChange(e) {

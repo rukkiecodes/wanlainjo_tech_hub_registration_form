@@ -46,8 +46,12 @@ export default createStore({
         course: '',
         duration: 1
       },
-      agrement: true
+      agrement: true,
+      verified: false
     },
+    activeCardOne: false,
+    activeCardTwo: false,
+    activeCardThree: false,
     loading: false,
     image: null,
     snackbar: false,
@@ -72,7 +76,7 @@ export default createStore({
 
   mutations: {
     next: state => {
-      if (state.step < 3) state.step += 1
+      if (state.step < 4) state.step += 1
     },
 
     prev: state => {
@@ -82,7 +86,13 @@ export default createStore({
 
     closeSnackbar: state => state.snackbar = false,
 
-    getStudent: (state, student) => state.viewStudent = student
+    getStudent: (state, student) => state.viewStudent = student,
+
+    toggleActiveCardOne: state => state.activeCardOne = !state.activeCardOne,
+
+    toggleActiveCardTwo: state => state.activeCardTwo = !state.activeCardTwo,
+
+    toggleActiveCardThree: state => state.activeCardThree = !state.activeCardThree,
   },
 
   actions: {
@@ -108,7 +118,7 @@ export default createStore({
       const uploadTask = uploadBytesResumable(ref(storage, link), this.state.image)
 
       uploadTask.on('state_changed',
-        snapshot => {},
+        snapshot => { },
         error => console.log(error),
         () => {
           getDownloadURL(uploadTask.snapshot.ref)
