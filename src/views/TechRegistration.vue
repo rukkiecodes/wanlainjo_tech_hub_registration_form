@@ -1,11 +1,15 @@
 <template>
   <v-responsive>
     <v-container class="d-flex flex-column justify-start align-center">
-      <v-card class="ma-0 pa-0" width="600" max-width="100%">
-        <img cover src="../assets/images/header.jpg" style="width: 100%; object-fit: cover;" />
+      <v-card class="ma-0 pa-0" width="500" max-width="100%">
+        <img
+          cover
+          src="../assets/images/header.jpg"
+          style="width: 100%; object-fit: cover"
+        />
       </v-card>
 
-      <v-card class="mt-5" width="600" max-width="100%">
+      <v-card class="mt-5" width="500" max-width="100%">
         <v-card-text>
           <v-text-field
             label="Full name"
@@ -44,19 +48,29 @@
           </v-card-actions>
         </v-card-text>
       </v-card>
+      <v-snackbar v-model="snackbar" :timeout="2000" :color="color">
+        {{ text }}
+
+        <template v-slot:actions>
+          <v-btn :color="textColor" icon variant="text" @click="closeSnackbar">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+        </template>
+      </v-snackbar>
     </v-container>
   </v-responsive>
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 export default {
   methods: {
     ...mapActions(["submitEventForm"]),
+    ...mapMutations(["closeSnackbar"]),
   },
 
   computed: {
-    ...mapState(["evenFormLoading", "evenForm"]),
+    ...mapState(["evenFormLoading", "evenForm", "snackbar", "text", "color", "textColor"]),
   },
 };
 </script>

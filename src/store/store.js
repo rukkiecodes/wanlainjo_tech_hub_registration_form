@@ -21,6 +21,7 @@ import {
 import uuid from 'uuid-random'
 
 export default createStore({
+  strict: false,
   state: {
     step: 1,
     formCredential: {
@@ -107,67 +108,67 @@ export default createStore({
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(5, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 2: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(10, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 3: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(15, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 4: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(20, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 5: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(25, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 6: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(30, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 7: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(35, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 8: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(40, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 9: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(45, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 10: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(50, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 10: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(55, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 10: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(60, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 11: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(65, 30000)) + parseInt(state.formCredential.course1.price);
         }
-        break;
+          break;
         case 12: {
           state.formCredential.course1.price = 30000
           state.formCredential.course1.price = parseInt(percentage(70, 30000)) + parseInt(state.formCredential.course1.price);
@@ -230,6 +231,10 @@ export default createStore({
       })
 
       this.state.evenFormLoading = false
+      this.state.snackbar = true
+      this.state.color = 'green'
+      this.state.snackbar = 'white'
+      this.state.text = 'Registration completed'
     },
 
     async getRegistrationForms() {
