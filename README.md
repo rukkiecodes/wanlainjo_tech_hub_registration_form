@@ -1,5 +1,14 @@
 # default
 
+## Demo links
+
+# students registration link
+http://bit.ly/3WsOE8q
+
+# event registration link
+https://bit.ly/3WwIoMO
+
+
 ## Project setup
 
 ```
