@@ -58,12 +58,12 @@
         <v-btn v-show="step > 1" @click="prev" color="warning" variant="tonal"
           >Go back</v-btn
         >
-        <v-btn v-show="step < 4" @click="next" color="#3C37FF" variant="tonal"
+        <v-btn v-show="step < 3" @click="next" color="#3C37FF" variant="tonal"
           >Next</v-btn
         >
 
         <v-btn
-          v-show="step == 4"
+          v-show="step == 3"
           @click="submitForm"
           :loading="loading"
           color="#3C37FF"

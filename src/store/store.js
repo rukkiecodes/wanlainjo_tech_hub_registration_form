@@ -36,15 +36,18 @@ export default createStore({
       sponsorPhone: '',
       course1: {
         course: '',
-        duration: 1
+        duration: 1,
+        price: 30000
       },
       course2: {
         course: '',
-        duration: 1
+        duration: 1,
+        price: 30000
       },
       course3: {
         course: '',
-        duration: 1
+        duration: 1,
+        price: 30000
       },
       agrement: true,
       verified: false
@@ -93,6 +96,86 @@ export default createStore({
     toggleActiveCardTwo: state => state.activeCardTwo = !state.activeCardTwo,
 
     toggleActiveCardThree: state => state.activeCardThree = !state.activeCardThree,
+
+    setCourseOnePrice: (state) => {
+      function percentage(percent, total) {
+        return ((percent / 100) * total).toFixed(0);
+      }
+
+      switch (state.formCredential.course1.duration) {
+        case 1: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(5, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 2: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(10, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 3: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(15, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 4: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(20, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 5: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(25, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 6: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(30, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 7: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(35, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 8: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(40, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 9: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(45, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 10: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(50, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 10: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(55, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 10: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(60, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 11: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(65, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+        break;
+        case 12: {
+          state.formCredential.course1.price = 30000
+          state.formCredential.course1.price = parseInt(percentage(70, 30000)) + parseInt(state.formCredential.course1.price);
+        }
+      }
+
+      console.log(state.formCredential.course1.price)
+    }
   },
 
   actions: {

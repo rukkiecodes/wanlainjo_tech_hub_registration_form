@@ -16,6 +16,7 @@
                 label="Courses"
                 variant="underlined"
                 hide-details
+                density="compact"
                 :items="courses"
               />
             </v-card-text>
@@ -27,6 +28,7 @@
                 :min="0"
                 :max="12"
                 step="1"
+                @update:model-value="setCourseOnePrice"
               ></v-slider>
             </v-card-text>
           </v-card>
@@ -105,21 +107,21 @@ import { mapMutations, mapState } from "vuex";
 export default {
   data: () => ({
     courses: [
-      "Frontend developement (web)",
-      "Frontend developement (Mobile)",
-      "Backend developement (Node)",
-      "Backend developement (PHP)",
-      "Backend developement (Python)",
-      "Robotics / Artificial Intelligence",
-      "Internet Of Things",
-      "Networking",
-      "Clud computing",
-      "Digital marketing",
-      "Data analysis",
-      "Technical writing",
-      "Copy writing",
-      "Graphic design",
-      "UI/UX",
+      { title: "Frontend developement (web)", price: 30000 },
+      { title: "Frontend developement (Mobile)", price: 30000 },
+      { title: "Backend developement (Node)", price: 30000 },
+      { title: "Backend developement (PHP)", price: 30000 },
+      { title: "Backend developement (Python)", price: 30000 },
+      { title: "Robotics / Artificial Intelligence", price: 30000 },
+      { title: "Internet Of Things", price: 30000 },
+      { title: "Networking", price: 30000 },
+      { title: "Clud computing", price: 30000 },
+      { title: "Digital marketing", price: 30000 },
+      { title: "Data analysis", price: 30000 },
+      { title: "Technical writing", price: 30000 },
+      { title: "Copy writing", price: 30000 },
+      { title: "Graphic design", price: 30000 },
+      { title: "UI/UX", price: 30000 },
     ],
   }),
 
@@ -128,6 +130,7 @@ export default {
       "toggleActiveCardOne",
       "toggleActiveCardTwo",
       "toggleActiveCardThree",
+      "setCourseOnePrice"
     ]),
   },
 
