@@ -6,7 +6,7 @@
 
 // Components
 import App from './App.vue'
-import router from './plugins/router'
+import router from './routes'
 import store from './store/store'
 
 // Composables

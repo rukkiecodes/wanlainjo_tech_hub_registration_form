@@ -1,6 +1,14 @@
 <template>
-  <v-container>
-    <v-table>
+  <v-container class="d-flex flex-column justify-start align-center">
+    <v-card class="ma-0 pa-0" width="500" max-width="100%">
+      <img
+        cover
+        src="../assets/images/header.jpg"
+        style="width: 100%; object-fit: cover"
+      />
+    </v-card>
+
+    <v-table fixed-header>
       <thead>
         <tr>
           <th class="text-left">Id</th>
