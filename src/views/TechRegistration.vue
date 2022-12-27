@@ -54,6 +54,7 @@
         <template v-slot:actions>
           <v-btn :color="textColor" icon variant="text" @click="closeSnackbar">
             <v-icon>mdi-close</v-icon>
+            <!-- <v-icon>mdi-close</v-icon> -->
           </v-btn>
         </template>
       </v-snackbar>
