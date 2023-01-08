@@ -50,6 +50,7 @@ export default createStore({
         duration: 1,
         price: 30000
       },
+      campus: '',
       agrement: true,
       verified: false
     },
